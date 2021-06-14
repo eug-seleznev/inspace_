@@ -158,7 +158,7 @@ router.post("/invite/register/:id", async (req: Request, res: Response) => {
 //user edit
 router.put("/user/edit", auth, async (req: Request, res: Response) => {
   try {
-    await User.findOne({ _id: req.user._id }, (err: any, doc: IUser) => {
+    await User.findOne({ _id: req.user._id }, (err: Error, doc: IUser) => {
       if (err) throw err;
       if (!doc) {
         return res.status(404).json({ err: "Документ не найден" });
