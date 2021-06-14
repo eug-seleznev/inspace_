@@ -163,10 +163,11 @@ router.put("/user/edit", auth, async (req: Request, res: Response) => {
       if (!doc) {
         return res.status(404).json({ err: "Документ не найден" });
       }
-      let keys:string[] = Object.keys(req.body)
-      for(let key of keys){
-        doc[key] = req.body[key]
+      let keys: string[] = Object.keys(req.body);
+      for (let key of keys) {
+        doc[key] = req.body[key];
       }
+      doc.save().then((newDoc) => res.json(newDoc));
     });
   } catch (error) {
     console.error(error);
