@@ -1,17 +1,22 @@
 
-import { Route } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
+import { useUserStore } from "../../stores/user/hooks";
 
 
 
 
 
 const Admin = ({match}: any) => {
-
+    const userStore = useUserStore();
+    
     return (
         <div id='layout'>
-            <p>layout</p>
+            <div>
+                <Link to={`${match.path}/design`}>design</Link>
+                <Link to={`${match.path}`}>admin</Link>
+            </div>
             <Route exact path={`${match.path}`}>
-                <h2> admin dashboard</h2>
+                {userStore.UserEmail}
             </Route>
 
         

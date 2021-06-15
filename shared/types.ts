@@ -42,13 +42,8 @@ interface Month {
 }
 interface Year {
   year: number;
-  months: [Month]
+  months: [Month];
 }
-
-
-
-
-
 
 export interface Block {
   block_type: string;
@@ -63,12 +58,27 @@ export interface Template {
   title: string;
 }
 export interface User {
-  firstname: string;
-  lastname: string;
-  fullname: string;
+  firstname?: string;
+  lastname?: string;
+  fullname?: string;
   username: string;
-  email: string;
-  phone: string;
+  email?: string;
+  phone?: string;
   password: string;
-  activated:boolean;
+  activated: boolean;
+}
+
+interface UserStat {
+  name: string;
+  count: number;
+}
+export interface StatUser {
+  stats: [UserStat];
+  visits: number;
+}
+export interface Stat {
+  date: Date;
+  day: number;
+  month: number;
+  year: number;
 }
