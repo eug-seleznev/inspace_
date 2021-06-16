@@ -11,7 +11,7 @@ const Admin = ({match}: any) => {
     const userStore = useUserStore();
     
     return (
-        <div id='layout'>
+        <div id='layout' style={{height:'100%'}}>
             <div>
                 <Link to={`${match.path}/design`}>design</Link>
                 <Link to={`${match.path}`}>admin</Link>

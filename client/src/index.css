@@ -17,7 +17,7 @@ body {
 }
  
 ::-webkit-scrollbar-track {
-
+  background-color: #1B2025;
 }
  
 ::-webkit-scrollbar-thumb {
@@ -26,9 +26,8 @@ body {
   border-radius: 9999px;
   background-color: #AAAAAA;
 
-
-  /* outline: 1px solid ; */
 }
+
  
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
