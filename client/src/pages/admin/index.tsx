@@ -1,5 +1,6 @@
 
 import { Link, Route } from "react-router-dom";
+import { TestStore } from "../../stores/RootStore";
 import { useUserStore } from "../../stores/user/hooks";
 
 
@@ -16,12 +17,12 @@ const Admin = ({match}: any) => {
                 <Link to={`${match.path}`}>admin</Link>
             </div>
             <Route exact path={`${match.path}`}>
-                {userStore.UserEmail}
+                {userStore.user.email}
             </Route>
 
         
             <Route exact path={`${match.path}/design`}>
-                <h2> test</h2>
+                <TestStore />
             </Route>
 
             <Route exact path={`${match.path}/booking`}>
