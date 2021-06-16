@@ -3,6 +3,7 @@ import cors from "cors";
 import { connectDB } from "./middleware/db";
 import * as dotenv from "dotenv";
 import admin_route from "./routes/creator/users";
+import newStat from "./middleware/newStat";
 
 dotenv.config();
 const app: Application = express();
@@ -19,3 +20,9 @@ app.use("/users", admin_route);
 
 const PORT = process.env.PORT || 1488;
 app.listen(PORT, () => console.log(`Server started on ${PORT}`));
+
+const StatChecker = async () => {
+  await newStat();
+  setTimeout(StatChecker, 1000 * 60 * 60 * 1);
+};
+StatChecker();
