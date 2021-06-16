@@ -1,14 +1,19 @@
 
-import { Route } from "react-router-dom";
+
 import Stats from "./stats";
 import Layout from "./layout";
 import Header from "../auth/Header";
 import style from './admin.module.css'
+import { Link, Route } from "react-router-dom";
+import { useUserStore } from "../../stores/user/hooks";
+
+
 
 
 
 const Admin = ({match}: any) => {
-
+    const userStore = useUserStore();
+    
     return (
         <div id='layout' className={style.main}>
             <Header/>

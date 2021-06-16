@@ -44,8 +44,20 @@ import {LoginData} from '../../interfaces/auth'
         }
       },
 
-      async Auth(token: string) {
-
+      async Auth(token: string | null) {
+       
+        try {
+          console.log(this.isAuth, 'is auth')
+            setAuthToken(token);
+            const res = await innerBackend.get(`${url}/users/user/me/get`)
+            this.isAuth = true;
+            this.user = res.data;
+            return true
+      }
+         catch (err) {
+         if (err) return false
+        
+        }
       },
       get Stats () {
         return this.user.stats as any
