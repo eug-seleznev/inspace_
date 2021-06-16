@@ -59,9 +59,7 @@ import {LoginData} from '../../interfaces/auth'
         
         }
       },
-      get Stats () {
-        return this.user.stats as any
-      },
+    
       get UserEmail () {
         return <p>{this.user.email}</p>
       },

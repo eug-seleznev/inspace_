@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useUserStore } from '../../../stores/user/hooks'
+// import { userStore } from '../../../stores/user/userStore'
+
 import style from '../admin.module.css'
 import getDate from '../getDate'
 
@@ -9,11 +11,11 @@ const Visits = () => {
     const [schedule, setSchedule] = useState(0)
     useEffect(()=>{
         setSchedule(Math.max(...stats))
-        console.log(store.Stats)
+        
     },[])
-    // useEffect(()=>{
-    //     console.log(store.Stats)
-    // },[store])
+    useEffect(()=>{
+        console.log(store.user.stats)
+    },[])
     // useEffect(()=>{
     //     console.log(schedule)
     // },[schedule])
@@ -30,11 +32,11 @@ const Visits = () => {
                        {schedule}
                     </div>
                     <div className={style.stats__booking__schedule}>
-                        {store.Stats.map((el:any,i:number)=>{
+                        {store.user.stats.map((el:any,i:number)=>{
                             console.log(el)
                             return (
                                 <div key={i} className={style.stats__visits__graph} style={{height:el/schedule*100+'%',backgroundColor:'#0074EB',width:'7px',marginRight:'5px'}}>
-
+             
                                 </div>
                             )
                         })}
