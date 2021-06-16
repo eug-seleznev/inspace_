@@ -1,4 +1,3 @@
-import { setAuthToken } from "./helper";
 import Auth from '../../pages/auth/index'
 import { useEffect, useMemo, useState } from "react";
 import { useUserStore } from "../../stores/user/hooks";
@@ -33,7 +32,6 @@ const PrivatePages = observer(({children}: any) => {
             if(res) setAuth(LoadingStatus.SUCCESS)
             else  setAuth(LoadingStatus.FAIL)
         })
-        console.log('render', userStore.user.email)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [token])
         

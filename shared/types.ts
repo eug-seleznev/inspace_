@@ -10,6 +10,7 @@ interface List {
 interface Services {
   title: string;
   text: string;
+  price: string;
   list: List;
 }
 interface IUser {
@@ -57,6 +58,13 @@ export interface Template {
   header: string;
   title: string;
 }
+export interface Stat {
+  date: Date;
+  day: number;
+  month: number;
+  year: number;
+  visits?:number;
+}
 export interface User {
   firstname?: string;
   lastname?: string;
@@ -66,19 +74,6 @@ export interface User {
   phone?: string;
   password: string;
   activated: boolean;
+  stats:[Stat]
 }
 
-interface UserStat {
-  name: string;
-  count: number;
-}
-export interface StatUser {
-  stats: [UserStat];
-  visits: number;
-}
-export interface Stat {
-  date: Date;
-  day: number;
-  month: number;
-  year: number;
-}
