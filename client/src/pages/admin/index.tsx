@@ -1,6 +1,6 @@
 
 import { Route } from "react-router-dom";
-
+import Constructor from "../constructor";
 
 
 
@@ -8,7 +8,7 @@ import { Route } from "react-router-dom";
 const Admin = ({match}: any) => {
 
     return (
-        <div id='layout'>
+        <div id='layout' style={{height:'100%'}}>
             <p>layout</p>
             <Route exact path={`${match.path}`}>
                 <h2> admin dashboard</h2>
@@ -16,7 +16,7 @@ const Admin = ({match}: any) => {
 
         
             <Route exact path={`${match.path}/design`}>
-                <h2> test</h2>
+                <Constructor />
             </Route>
 
             <Route exact path={`${match.path}/booking`}>
