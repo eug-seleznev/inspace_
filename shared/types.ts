@@ -10,6 +10,7 @@ interface List {
 interface Services {
   title: string;
   text: string;
+  price: string;
   list: List;
 }
 interface IUser {
@@ -42,13 +43,8 @@ interface Month {
 }
 interface Year {
   year: number;
-  months: [Month]
+  months: [Month];
 }
-
-
-
-
-
 
 export interface Block {
   block_type: string;
@@ -62,13 +58,22 @@ export interface Template {
   header: string;
   title: string;
 }
-export interface User {
-  firstname: string;
-  lastname: string;
-  fullname: string;
-  username: string;
-  email: string;
-  phone: string;
-  password: string;
-  activated:boolean;
+export interface Stat {
+  date: Date;
+  day: number;
+  month: number;
+  year: number;
+  visits?:number;
 }
+export interface User {
+  firstname?: string;
+  lastname?: string;
+  fullname?: string;
+  username: string;
+  email?: string;
+  phone?: string;
+  password: string;
+  activated: boolean;
+  stats:[Stat]
+}
+

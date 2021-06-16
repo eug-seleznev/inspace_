@@ -15,12 +15,14 @@ import {LoginData} from '../../interfaces/auth'
         username: '',
         email: '',
         phone: '',
-        password: ''
+        password: '',
+        activated:false,
+        stats:[{}]
       } as User,
       isAuth: false,
       isError: false,
       template: {},
-
+     
 
       async registerUser(id: string) {
 
@@ -45,7 +47,9 @@ import {LoginData} from '../../interfaces/auth'
       async Auth(token: string) {
 
       },
-
+      get Stats () {
+        return this.user.stats as any
+      },
       get UserEmail () {
         return <p>{this.user.email}</p>
       },
@@ -57,8 +61,8 @@ import {LoginData} from '../../interfaces/auth'
 
       get GetTemplateData () {
         return this.template as any
-      }
-      
+      },
+   
 
  
     }
