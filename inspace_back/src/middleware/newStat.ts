@@ -1,27 +1,31 @@
 import * as dotenv from "dotenv";
-import Stat,{IStat}  from "../models/Stat"
+import User, { IUser } from "../models/User";
 dotenv.config();
 
-export = async() => {
+export = async () => {
   try {
     const d = new Date();
-    let stat = await Stat.findOne({
+    const huy = {
+      date: d,
       day: d.getDate(),
       month: d.getMonth() + 1,
       year: d.getFullYear(),
-    });
-    if (!stat) {
-      stat = new Stat({
-        date: d,
-        day: d.getDate(),
-        month: d.getMonth() + 1,
-        year: d.getFullYear(),
+    };
+    const users = await User.find();
+    for (const user of users) {
+      const stat = user.stats.filter((el) => {
+        return (
+          el.day === huy.day && el.month === huy.month && el.year === huy.year
+        );
       });
-      await stat.save();
+      if (stat.length === 0) {
+        user.stats.push(huy);
+        await user.save();
+      }
     }
-    return stat._id
+    // return stat._id;
   } catch (error) {
     console.error(error.message);
     process.exit(1);
   }
-}
+};
