@@ -9,6 +9,7 @@ interface List {
   req: boolean;
 }
 export interface Services {
+  _id?: string;
   title?: string;
   text?: string;
   price?: string;
@@ -52,7 +53,7 @@ export interface Block {
   text?: [string];
   list?: [string];
   links?: Link;
-  services?: Services;
+  services?: [Services];
   years?: [Year];
 }
 export interface Template {

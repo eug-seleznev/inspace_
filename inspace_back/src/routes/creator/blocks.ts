@@ -6,6 +6,7 @@ import auth from "../../middleware/auth";
 import User, { IUser } from "../../models/User";
 import services from "../../middleware/templates/blocks/services";
 import Template, { ITemplate } from "../../models/Template";
+import Block, { IBlock } from "../../models/Block";
 
 const router = Router();
 
@@ -21,11 +22,11 @@ router.post("/add/services", auth, async (req, res) => {
         }
         await User.populate(doc, {
           path: "template",
-          populate: { path: "blocks" },
         });
-        doc.template.block.push(services());
+        let newBlockId = services();
+        doc.template.block.push(newBlockId);
         await doc.template.save();
-        res.json(doc.template);
+        res.json(await Block.findOne({ _id: newBlockId }));
       }
     );
   } catch (error) {
@@ -37,14 +38,16 @@ router.post("/add/services", auth, async (req, res) => {
 //add service to block
 router.post("/services/add/:id", auth, async (req: Request, res: Response) => {
   try {
-    await Template.findOne(
-      { blocks: req.params.id },
-      (err: Error, doc: ITemplate) => {
+    await Block.findOne(
+      { _id: req.params.id },
+      async (err: Error, doc: IBlock) => {
         if (err) throw err;
         if (!doc) {
           return res.status(404).json({ err: "huy" });
         }
-        
+        doc.services.push({});
+        await doc.save();
+        res.json(doc);
       }
     );
   } catch (error) {
@@ -53,4 +56,32 @@ router.post("/services/add/:id", auth, async (req: Request, res: Response) => {
   }
 });
 
+//edit service
+router.put(
+  "/services/edit/service/:id",
+  auth,
+  async (req: Request, res: Response) => {
+    try {
+      await Block.findOne(
+        { "services._id": req.params.id },
+        async (err: Error, doc: IBlock) => {
+          if (err) throw err;
+          if (!doc) {
+            return res.status(404).json({ err: "huy" });
+          }
+          let keys: string[] = Object.keys(req.body);
+          let service = doc.services.filter((el) => el._id === req.params.id);
+          for (let key of keys) {
+            service[key] = req.body[key];
+          }
+          await doc.save();
+          res.json(doc);
+        }
+      );
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ err: "server error" });
+    }
+  }
+);
 export default router;

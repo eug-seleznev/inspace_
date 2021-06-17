@@ -2,7 +2,6 @@ import { useInjection } from 'inversify-react'
 import { observer } from 'mobx-react'
 import { useEffect, useState } from 'react'
 import { TestStore } from '../../../../stores/TestStore'
-import { useUserStore } from '../../../../stores/user/hooks'
 // import { userStore } from '../../../stores/user/userStore'
 
 import style from '../../admin.module.scss'
