@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
-import style from '../../pages/admin/admin.module.css'
+import style from '../../pages/admin/admin.module.scss'
 const Layout = () => {
     const [outline, setOutline] = useState<string>('')
     const picked = {

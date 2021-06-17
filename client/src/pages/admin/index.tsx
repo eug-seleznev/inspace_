@@ -3,7 +3,7 @@
 import Stats from "./stats/index";
 import Layout from "../../shared/layout";
 import Header from "../auth/Header";
-import style from './admin.module.css'
+import style from './admin.module.scss'
 import { Link, Route } from "react-router-dom";
 
 

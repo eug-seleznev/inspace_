@@ -1,8 +1,8 @@
-import style from '../admin.module.css'
-import Visits from './visits'
-import Booking from './booking'
-import News from './news'
-import More from './more'
+import style from '../admin.module.scss'
+import Visits from './components/visits'
+import Booking from './components/booking'
+import News from './components/news'
+import More from './components/more'
 const Stats = () => {
 
     return (
