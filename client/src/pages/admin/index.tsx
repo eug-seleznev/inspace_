@@ -4,6 +4,7 @@ import Layout from "../../shared/layout";
 import Header from "../auth/Header";
 import style from './admin.module.scss'
 import { Route } from "react-router-dom";
+import Service from "./service";
 
 
 
@@ -26,7 +27,7 @@ const Admin = ({match}: any) => {
             </Route>
 
             <Route exact path={`${match.path}/service`}>
-                <h2> test</h2>
+                <Service />
             </Route>
 
             <Route exact path={`${match.path}/events`}>

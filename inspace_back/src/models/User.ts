@@ -2,6 +2,7 @@ import { model, Schema, Model, Document, ObjectId } from "mongoose";
 import { ITemplate } from "./Template";
 import { User } from "../../../shared/types";
 export interface IUser extends Document, User {
+  _id?:string;
   template: ITemplate["_id"];
 }
 

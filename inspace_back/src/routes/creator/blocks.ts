@@ -23,10 +23,11 @@ router.post("/add/services", auth, async (req, res) => {
         await User.populate(doc, {
           path: "template",
         });
-        let newBlockId = services();
+        const newBlockId = services();
         doc.template.block.push(newBlockId);
         await doc.template.save();
-        res.json(await Block.findOne({ _id: newBlockId }));
+        const block = await Block.findOne({ _id: newBlockId });
+        res.json(block.services);
       }
     );
   } catch (error) {
@@ -35,7 +36,7 @@ router.post("/add/services", auth, async (req, res) => {
   }
 });
 
-//add service to block
+// add service to block
 router.post("/services/add/:id", auth, async (req: Request, res: Response) => {
   try {
     await Block.findOne(
@@ -47,7 +48,7 @@ router.post("/services/add/:id", auth, async (req: Request, res: Response) => {
         }
         doc.services.push({});
         await doc.save();
-        res.json(doc);
+        res.json(doc.services);
       }
     );
   } catch (error) {
@@ -56,7 +57,7 @@ router.post("/services/add/:id", auth, async (req: Request, res: Response) => {
   }
 });
 
-//edit service
+// edit service
 router.put(
   "/services/edit/service/:id",
   auth,
@@ -69,15 +70,72 @@ router.put(
           if (!doc) {
             return res.status(404).json({ err: "huy" });
           }
-          let keys: string[] = Object.keys(req.body);
-          let service = doc.services.filter((el) => el._id === req.params.id);
-          for (let key of keys) {
+          const keys: string[] = Object.keys(req.body);
+          const service = doc.services.filter(
+            (el) => el._id === req.params.id
+          )[0];
+          for (const key of keys) {
             service[key] = req.body[key];
           }
           await doc.save();
-          res.json(doc);
+          res.json(doc.services);
         }
       );
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ err: "server error" });
+    }
+  }
+);
+
+// add item to service's list
+router.put(
+  "/services/list/additem/:id",
+  auth,
+  async (req: Request, res: Response) => {
+    try {
+      await Block.findOne(
+        { "services._id": req.params.id },
+        async (err: Error, doc: IBlock) => {
+          if (err) throw err;
+          if (!doc) {
+            return res.status(404).json({ err: "huy" });
+          }
+          const service = doc.services.filter(
+            (el) => el._id === req.params.id
+          )[0];
+          service.list.push({});
+          await doc.save();
+          res.json(doc.services);
+        }
+      );
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ err: "server error" });
+    }
+  }
+);
+
+// edit service's list's item
+router.put(
+  "/services/list/edit/:id",
+  auth,
+  async (req: Request, res: Response) => {
+    try {
+      const block = await Block.findOneAndUpdate(
+        { "services.list._id": req.params.id },
+        { $set: req.body }
+      );
+      res.json(block.services);
+      // await Block.findOne(
+      //   { "services.list._id": req.params.id },
+      //   (err: Error, doc: IBlock) => {
+      //     if (err) throw err;
+      //     if (!doc) {
+      //       return res.status(404).json({ err: "huy" });
+      //     }
+      //   }
+      // );
     } catch (error) {
       console.error(error);
       return res.status(500).json({ err: "server error" });

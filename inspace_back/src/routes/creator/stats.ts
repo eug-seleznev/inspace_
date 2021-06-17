@@ -13,7 +13,7 @@ const router = Router();
 // increase user count
 router.get("/usercount/increase/:id",async(req,res)=>{
     try{
-        const updObj={$inc:{visits:1}}
+        const updObj={$inc:{"stats.$.visits":1}}
         await stats(req.params.id,updObj)
         return res.json({msg:"huy"})
     }catch(error){
