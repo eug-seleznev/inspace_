@@ -1,22 +1,29 @@
+import { Provider } from "inversify-react";
 import {
   BrowserRouter as Router,
   Route,
   Switch,
 } from "react-router-dom";
-import PrivatePages from "./components/auth/auth"; //user auth
+// import PrivatePages from "./components/auth/auth"; //user auth
 import Admin from "./pages/admin";
-import { UserStoreProvider } from './stores/user/hooks';
+import { RootStore } from "./stores/RootStore";
 
 const App = () => {
+  const container = new RootStore().container;
+
   return (
     <Router>
-      <UserStoreProvider>
-        <PrivatePages>
+      {/* <UserStoreProvider> */}
+        {/* <PrivatePages> */}
+        <Provider container={container}>
           <Switch>
-              <Route  path='/admin' component={Admin} />
-          </Switch>
-       </PrivatePages>
-      </UserStoreProvider>
+                <Route  path='/admin' component={Admin} />
+            </Switch>
+        {/* </PrivatePages> */}
+
+        </Provider>
+          
+      {/* </UserStoreProvider> */}
     </Router>
   );
 }

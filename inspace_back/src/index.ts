@@ -3,6 +3,7 @@ import cors from "cors";
 import { connectDB } from "./middleware/db";
 import * as dotenv from "dotenv";
 import admin_route from "./routes/creator/users";
+import stat_route from "./routes/creator/stats";
 import newStat from "./middleware/newStat";
 
 dotenv.config();
@@ -17,12 +18,13 @@ app.use("/archive", express.static(__dirname + "/archive"));
 app.get("/", (req: Request, res: Response) => res.send("no hack plz"));
 
 app.use("/users", admin_route);
+app.use("/stats", stat_route);
 
 const PORT = process.env.PORT || 1488;
 app.listen(PORT, () => console.log(`Server started on ${PORT}`));
 
 const StatChecker = async () => {
   await newStat();
-  setTimeout(StatChecker, 1000 * 60 * 60 * 1);
+  setTimeout(StatChecker, 1000 * 60 * 10);
 };
 StatChecker();

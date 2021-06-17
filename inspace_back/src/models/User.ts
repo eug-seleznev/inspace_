@@ -15,9 +15,13 @@ const UserSchema = new Schema({
   fullname: {
     type: String,
   },
-  username: String,
+  username: {
+    type: String,
+    unique: true,
+  },
   email: {
     type: String,
+    unique: true,
   },
   phone: {
     type: String,
@@ -33,6 +37,35 @@ const UserSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  stats: [
+    {
+      date: { type: Date },
+      day: {
+        type: Number,
+      },
+      month: {
+        type: Number,
+      },
+      year: {
+        type: Number,
+      },
+      visits: {
+        type: Number,
+        default: 0,
+      },
+      // users: [
+      //   {
+      //     stats: [
+      //       {
+      //         name: String,
+      //         count: { type: Number, default: 0 },
+      //       },
+      //     ],
+      //     visits: Number,
+      //   },
+      // ],
+    },
+  ],
 });
 
 export default model<IUser>("user", UserSchema);

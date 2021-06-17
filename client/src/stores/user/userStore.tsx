@@ -1,4 +1,5 @@
 import axios from "axios"
+import { injectable } from "inversify"
 import { User } from "../../../../shared/types"
 import { innerBackend, setAuthToken, url } from "../../components/auth/helper"
 import {LoginData} from '../../interfaces/auth'
@@ -40,7 +41,6 @@ import {LoginData} from '../../interfaces/auth'
       async Auth(token: string | null) {
        
         try {
-          console.log(this.isAuth, 'is auth')
             setAuthToken(token);
             const res = await innerBackend.get(`${url}/users/user/me/get`)
             this.isAuth = true;
