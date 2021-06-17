@@ -1,4 +1,5 @@
 import axios from "axios"
+import { injectable } from "inversify"
 import { User } from "../../../../shared/types"
 import { innerBackend, setAuthToken, url } from "../../components/auth/helper"
 import {LoginData} from '../../interfaces/auth'

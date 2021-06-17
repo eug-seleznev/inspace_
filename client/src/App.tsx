@@ -4,12 +4,9 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
-import PrivatePages from "./components/auth/auth"; //user auth
+// import PrivatePages from "./components/auth/auth"; //user auth
 import Admin from "./pages/admin";
 import { RootStore } from "./stores/RootStore";
-import { TestStore } from "./stores/TestStore";
-import { UserStoreProvider } from './stores/user/hooks';
-import Render from "./stores/user/test";
 
 const App = () => {
   const container = new RootStore().container;
@@ -20,7 +17,7 @@ const App = () => {
         {/* <PrivatePages> */}
         <Provider container={container}>
           <Switch>
-                <Route  path='/hey' component={Render} />
+                <Route  path='/admin' component={Admin} />
             </Switch>
         {/* </PrivatePages> */}
 

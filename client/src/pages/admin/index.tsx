@@ -1,17 +1,10 @@
 
-import { Provider } from "inversify-react";
 import { Link, Route } from "react-router-dom";
-import { RootStore } from "../../stores/RootStore";
-// import { TestStore } from "../../stores/RootStore";
-import { useUserStore } from "../../stores/user/hooks";
-import Render from "../../stores/user/test";
-
 
 
 
 
 const Admin = ({match}: any) => {
-    const userStore = useUserStore();
 
     return (
         <div id='layout'>
@@ -21,11 +14,11 @@ const Admin = ({match}: any) => {
             </div>
 
             <Route exact path={`${match.path}`}>
-                {userStore.user.email}
+                <h2>stat</h2>
             </Route>
 
                 <Route exact path={`${match.path}/design`}>
-                    <Render />
+                    <h3>design </h3>
                 </Route>
 
             <Route exact path={`${match.path}/booking`}>
