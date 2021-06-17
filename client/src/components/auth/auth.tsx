@@ -30,7 +30,7 @@ const PrivatePages = observer(({children}: any) => {
     useEffect(() => {
         userStore.Auth(token as string).then(res => {
             if(res) setAuth(LoadingStatus.SUCCESS)
-            else  setAuth(LoadingStatus.FAIL)
+            else  setAuth(LoadingStatus.SUCCESS)
         })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [token])
