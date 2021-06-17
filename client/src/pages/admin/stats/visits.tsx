@@ -1,21 +1,24 @@
+import { useInjection } from 'inversify-react'
+import { observer } from 'mobx-react'
 import { useEffect, useState } from 'react'
+import { TestStore } from '../../../stores/TestStore'
 import { useUserStore } from '../../../stores/user/hooks'
 // import { userStore } from '../../../stores/user/userStore'
 
 import style from '../admin.module.css'
 import getDate from '../getDate'
 
-const Visits = () => {
+const Visits = observer(() => {
     let stats = [64,23,51,23,77,89]
-    const store = useUserStore();
+    const store = useInjection(TestStore)
     const [schedule, setSchedule] = useState(0)
     useEffect(()=>{
         setSchedule(Math.max(...stats))
         
     },[])
-    useEffect(()=>{
-        console.log(store.user.stats)
-    },[])
+    // useEffect(()=>{
+        // console.log(store.user.stats)
+    // },[])
     // useEffect(()=>{
     //     console.log(schedule)
     // },[schedule])
@@ -32,20 +35,20 @@ const Visits = () => {
                        {schedule}
                     </div>
                     <div className={style.stats__booking__schedule}>
-                        {store.user.stats.map((el:any,i:number)=>{
+                        {/* {store.user.stats.map((el:any,i:number)=>{
                             console.log(el)
                             return (
                                 <div key={i} className={style.stats__visits__graph} style={{height:el/schedule*100+'%',backgroundColor:'#0074EB',width:'7px',marginRight:'5px'}}>
              
                                 </div>
                             )
-                        })}
+                        })} */}
                     </div>
                 </div>
            </div>
 
     )
-}
+})
 
 
 export default Visits
