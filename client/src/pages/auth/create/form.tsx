@@ -1,7 +1,8 @@
 import { observer } from "mobx-react";
 import { useState } from "react"
-import { useUserStore } from "../../../stores/user/hooks";
 import {LoginData} from '../../../interfaces/auth'
+import { useInjection } from "inversify-react";
+import { UserStore } from "../../../stores/user_/UserStore";
 
 
 
@@ -12,7 +13,7 @@ const CreateUserForrm = observer(() => {
         email: '',
         password: ''
     })
-    const store = useUserStore();
+    const store = useInjection(UserStore);
 
     const onChange = (e: any) => {
         setFormData({...formData, [e.target.name]: e.target.value})

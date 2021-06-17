@@ -4,7 +4,7 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
-// import PrivatePages from "./components/auth/auth"; //user auth
+import PrivatePages from "./components/auth/auth"; //user auth
 import Admin from "./pages/admin";
 import { RootStore } from "./stores/RootStore";
 
@@ -13,17 +13,13 @@ const App = () => {
 
   return (
     <Router>
-      {/* <UserStoreProvider> */}
-        {/* <PrivatePages> */}
         <Provider container={container}>
-          <Switch>
+          <PrivatePages>
+            <Switch>
                 <Route  path='/admin' component={Admin} />
             </Switch>
-        {/* </PrivatePages> */}
-
+         </PrivatePages>
         </Provider>
-          
-      {/* </UserStoreProvider> */}
     </Router>
   );
 }

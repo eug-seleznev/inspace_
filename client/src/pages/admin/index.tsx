@@ -1,11 +1,12 @@
 
+import { useInjection } from "inversify-react";
 import { Link, Route } from "react-router-dom";
+import { UserStore } from "../../stores/user_/UserStore";
 
 
 
 
 const Admin = ({match}: any) => {
-
     return (
         <div id='layout'>
             <div>

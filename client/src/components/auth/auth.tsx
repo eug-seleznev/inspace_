@@ -1,7 +1,8 @@
 import Auth from '../../pages/auth/index'
 import { useEffect, useMemo, useState } from "react";
-import { useUserStore } from "../../stores/user/hooks";
 import { observer } from "mobx-react";
+import { useInjection } from 'inversify-react';
+import { UserStore } from '../../stores/user_/UserStore';
 
 
 
@@ -16,7 +17,7 @@ export enum LoadingStatus {
 
 const PrivatePages = observer(({children}: any) => {
 
-    const userStore = useUserStore();
+    const userStore = useInjection(UserStore);
     const [auth, setAuth] = useState<LoadingStatus>(userStore.isAuth
         ? LoadingStatus.SUCCESS 
         : LoadingStatus.LOADING
@@ -28,10 +29,13 @@ const PrivatePages = observer(({children}: any) => {
 
 
     useEffect(() => {
-        userStore.Auth(token as string).then(res => {
+        if(token || userStore.isAuth){
+            userStore.GetUser(token as string).then(res => {
             if(res) setAuth(LoadingStatus.SUCCESS)
-            else  setAuth(LoadingStatus.SUCCESS)
-        })
+            else  setAuth(LoadingStatus.FAIL)
+         })
+        } else setAuth(LoadingStatus.FAIL)
+        
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [token])
         
