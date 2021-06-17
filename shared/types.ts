@@ -4,9 +4,9 @@ interface Link {
 }
 
 interface List {
-  price: number;
-  text: string;
-  req: boolean;
+  price?: number;
+  text?: string;
+  req?: boolean;
 }
 export interface Services {
   _id?: string;
