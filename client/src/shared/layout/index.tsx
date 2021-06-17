@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import style from '../../pages/admin/admin.module.css'
 const Layout = () => {
-    const [outline, setOutline] = useState('')
+    const [outline, setOutline] = useState<string>('')
     const picked = {
         backgroundColor:'#484848'
     }

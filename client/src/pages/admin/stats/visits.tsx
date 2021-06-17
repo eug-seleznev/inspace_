@@ -11,7 +11,7 @@ import getDate from '../getDate'
 const Visits = observer(() => {
     let stats = [64,23,51,23,77,89]
     const store = useInjection(TestStore)
-    const [schedule, setSchedule] = useState(0)
+    const [schedule, setSchedule] = useState<number>(0)
     useEffect(()=>{
         setSchedule(Math.max(...stats))
         
