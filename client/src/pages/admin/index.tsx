@@ -1,21 +1,21 @@
 
 import Constructor from "../constructor";
 import { Link, Route } from "react-router-dom";
+import Stats from "./stats/index";
+import Layout from "../../shared/layout";
+import Header from "../auth/Header";
+import style from './admin.module.scss'
 
 
 
 
 const Admin = ({match}: any) => {
-
     return (
-        <div id='layout' style={{height:'100%'}}>
-            <div>
-                <Link to={`${match.path}/design`}>design</Link>
-                <Link to={`${match.path}`}>admin</Link>
-            </div>
-
+        <div id='layout' className={style.main} style={{height:'100%'}}>
+            <Header/>
+            <Layout/>
             <Route exact path={`${match.path}`}>
-                <h2>stat</h2>
+                <Stats/>
             </Route>
 
         

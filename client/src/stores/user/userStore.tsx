@@ -16,11 +16,18 @@ import {LoginData} from '../../interfaces/auth'
         username: '',
         email: '',
         phone: '',
-        password: ''
+        password: '',
+        activated:false,
+        stats:[{}]
       } as User,
       isAuth: false,
       isError: false,
       template: {},
+     
+
+      async registerUser(id: string) {
+
+      },
 
       //@POST /users/auth {email:email,password:password} - авторизация
       async Login(formData: LoginData){
@@ -52,9 +59,7 @@ import {LoginData} from '../../interfaces/auth'
         
         }
       },
-
-       
-
+    
       get UserEmail () {
         return <p>{this.user.email}</p>
       },
@@ -66,8 +71,8 @@ import {LoginData} from '../../interfaces/auth'
 
       get GetTemplateData () {
         return this.template as any
-      }
-      
+      },
+   
 
  
     }

@@ -6,12 +6,14 @@ interface Link {
 interface List {
   price: number;
   text: string;
+  req: boolean;
 }
-interface Services {
-  title: string;
-  text: string;
-  price: string;
-  list: List;
+export interface Services {
+  _id?: string;
+  title?: string;
+  text?: string;
+  price?: string;
+  list?: [List];
 }
 interface IUser {
   name: string;
@@ -51,7 +53,7 @@ export interface Block {
   text?: [string];
   list?: [string];
   links?: Link;
-  services?: Services;
+  services?: [Services];
   years?: [Year];
 }
 export interface Template {
@@ -63,7 +65,7 @@ export interface Stat {
   day: number;
   month: number;
   year: number;
-  visits?:number;
+  visits?: number;
 }
 export interface User {
   firstname?: string;
@@ -74,6 +76,5 @@ export interface User {
   phone?: string;
   password: string;
   activated: boolean;
-  stats:[Stat]
+  stats: [Stat];
 }
-

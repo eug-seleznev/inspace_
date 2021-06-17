@@ -13,7 +13,7 @@ const BlockSchema = new Schema({
       title: String,
       text: String,
       price: String,
-      list: [{ text: String, price: String }],
+      list: [{ text: String, price: String, req: Boolean }],
     },
   ],
   years: [
