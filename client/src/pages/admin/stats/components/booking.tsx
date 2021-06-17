@@ -1,5 +1,5 @@
+import getCurrentMonth from '../../../../shared/date/getCurrentMonth'
 import style from '../../admin.module.scss'
-import getCurrentMonth from '../../getCurrentMonth'
 
 
 const Booking = () => {

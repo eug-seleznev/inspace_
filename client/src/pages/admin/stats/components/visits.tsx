@@ -1,11 +1,12 @@
 import { useInjection } from 'inversify-react'
 import { observer } from 'mobx-react'
 import { useEffect, useState } from 'react'
+import getDate from '../../../../shared/date/getDate'
 import { TestStore } from '../../../../stores/TestStore'
 // import { userStore } from '../../../stores/user/userStore'
 
 import style from '../../admin.module.scss'
-import getDate from '../../getDate'
+
 
 const Visits = observer(() => {
     let stats = [64,23,51,23,77,89]
