@@ -1,6 +1,6 @@
 import { observer } from "mobx-react";
 import { useUserStore } from "../../stores/user/hooks";
-import style from './auth.module.css'
+import style from './auth.module.scss'
 
 
 
