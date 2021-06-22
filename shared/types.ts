@@ -15,18 +15,18 @@ export interface Services {
   price?: string;
   list?: [List];
 }
-interface IUser {
+export interface ReserveUser {
   name: string;
   phone: string;
   email: string;
 }
 interface Timegate {
-  start: Date;
-  end: Date;
+  start: number;
+  end: number;
 }
-interface Reservations {
-  user: IUser;
-  service: string;
+export interface Reservations {
+  user: ReserveUser;
+  service: Services;
   timegate: Timegate;
 }
 interface Events {
@@ -35,6 +35,7 @@ interface Events {
   description: string;
 }
 interface Days {
+  _id?: string;
   date: Date;
   reservations: [Reservations];
   events: [Events];
@@ -62,6 +63,7 @@ export interface Template {
 }
 export interface Stat {
   date: Date;
+  date_locale: string;
   day: number;
   month: number;
   year: number;

@@ -1,6 +1,6 @@
 
 import Constructor from "../constructor";
-import Stats from "./stats/index";
+import Dashboard from "./dashboard/index";
 import Layout from "../../shared/layout";
 import Header from "../auth/Header";
 import style from './admin.module.scss'
@@ -11,12 +11,14 @@ import Service from "./service";
 
 
 const Admin = ({match}: any) => {
+
+    
     return (
         <div id='layout' className={style.main} style={{height:'100%'}}>
             <Header/>
             <Layout/>
             <Route exact path={`${match.path}`}>
-                <Stats/>
+                <Dashboard />
             </Route>
 
         

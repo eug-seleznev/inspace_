@@ -5,6 +5,7 @@ import * as dotenv from "dotenv";
 import admin_route from "./routes/creator/users";
 import stat_route from "./routes/creator/stats";
 import block_route from "./routes/creator/blocks";
+import cus_services from "./routes/consumer/services";
 import newStat from "./middleware/newStat";
 
 dotenv.config();
@@ -21,6 +22,7 @@ app.get("/", (req: Request, res: Response) => res.send("no hack plz"));
 app.use("/users", admin_route);
 app.use("/stats", stat_route);
 app.use("/blocks", block_route);
+app.use("/reserve", cus_services);
 
 const PORT = process.env.PORT || 1488;
 app.listen(PORT, () => console.log(`Server started on ${PORT}`));
