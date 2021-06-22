@@ -32,7 +32,7 @@ const App = () => {
         </Provider>
     </Router>
   );
-})
+}
 
 export default App;
 

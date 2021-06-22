@@ -2,7 +2,7 @@
 import Constructor from "../constructor";
 import Dashboard from "./dashboard/index";
 import Layout from "../../shared/layout";
-import Header from "../auth/Header";
+import Header from "../../shared/layout/component/Header";
 import style from './admin.module.scss'
 import { Route } from "react-router-dom";
 import Service from "./service";
@@ -15,8 +15,8 @@ const Admin = ({match}: any) => {
     
     return (
         <div id='layout' className={style.main} style={{height:'100%'}}>
-            <Header/>
-            <Layout/>
+           
+            <Layout match={match}>
             <Route exact path={`${match.path}`}>
                 <Dashboard />
             </Route>
@@ -37,6 +37,7 @@ const Admin = ({match}: any) => {
             <Route exact path={`${match.path}/events`}>
                 <h2> events</h2>
             </Route>
+            </Layout>
 
         </div>
     )

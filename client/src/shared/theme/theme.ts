@@ -23,7 +23,7 @@ declare module "styled-components" {
 }
 
 
-const themeDark: DefaultTheme = {
+export const themeDark: DefaultTheme = {
     colors: {
         text: '#FFFFFF',
         main: '#1B2025',
@@ -36,7 +36,7 @@ const themeDark: DefaultTheme = {
    
 }
  
-const themeLight: DefaultTheme = {
+export const themeLight: DefaultTheme = {
     colors: {
         text: '#FFFFFF',
         main: '#1B2025',
@@ -50,11 +50,6 @@ const themeLight: DefaultTheme = {
 }
  
 
-export const useTheme = () => {
-    const uiStore = useInjection(UIStore);
-    return uiStore.theme === ThemePicker.DARK ? themeDark : themeLight
-
-}
 
 
 export {}

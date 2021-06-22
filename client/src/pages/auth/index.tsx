@@ -2,7 +2,7 @@
 import UserCard from "./card"
 import CreateUserForrm from "./create/form"
 
-import Header from "./Header"
+import Header from "../../shared/layout/component/Header"
 
 
 const Auth = () => {

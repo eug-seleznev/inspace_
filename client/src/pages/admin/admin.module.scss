@@ -1,33 +1,7 @@
 $grey-text:#747474;
 $block-background:#18181C ;
 $block-border-radius:10px ;
-.main {
-    background-color: #141414;
-    min-height: 100vh;
-    color: white;
-}
-.layout {
-    background-color: #313131  ;
-    width:100%;
-    height: 62px;
-    display: flex;
-    align-items: center;
-    margin-top: 15px;
-}
-.links {
-    display:flex;
-    justify-content:space-between;
-    width:900px;
-}
-.link {
-   
-    border-radius: 30px;
-    padding: 24px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    color: #BEBEBE;
-    text-decoration: none;
-}
+
 .stats {
     margin-left:15vw;
     margin-top: 58px;
