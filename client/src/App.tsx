@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Provider } from "inversify-react";
+import { Provider, useInjection } from "inversify-react";
 import {
   BrowserRouter as Router,
   Route,
@@ -32,7 +32,7 @@ const App = () => {
         </Provider>
     </Router>
   );
-}
+})
 
 export default App;
 

@@ -33,6 +33,15 @@ export class UserStore {
             console.log(err)
             }
     }
+    @action async IncreaseUserCount(id:string|undefined){
+        try { 
+            const res = await axios.get(`${url}/stats/usercount/increase/${id}`)
+            console.log(res.data, 'data')
+        } catch (err) {
+            //todo errors on login form
+            console.log(err)
+            }
+    }
     //get user data
     @action async GetUser(token: string | null) {
         try {

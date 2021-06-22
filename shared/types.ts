@@ -76,7 +76,8 @@ export interface User {
   username: string;
   email?: string;
   phone?: string;
+  _id: string;
   password: string;
   activated: boolean;
-  stats: [Stat];
+  stats: Stat[];
 }
