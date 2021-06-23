@@ -32,12 +32,25 @@ export default Navbar
 
 const Links: ILinks[] =[
     {
-        title: 'design',
-        path: 'design'
+        title: 'Дешборд',
+        path: '/'
     },
     {
-        title: 'service',
-        path: 'service'
+        title: 'Дизайн',
+        path: '/design'
+    },
+    
+    {
+        title: 'Бронирование',
+        path: '/book'
+    },
+    {
+        title: 'Услуги',
+        path: '/service'
+    },
+    {
+        title: 'Мероприятия',
+        path: '/events'
     }
 ]
 

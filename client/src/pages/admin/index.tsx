@@ -26,7 +26,7 @@ const Admin = ({match}: any) => {
                 <Constructor />
             </Route>
 
-            <Route exact path={`${match.path}/booking`}>
+            <Route exact path={`${match.path}/book`}>
                 <h2> test</h2>
             </Route>
 
