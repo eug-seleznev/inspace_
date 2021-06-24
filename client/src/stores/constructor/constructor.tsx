@@ -28,12 +28,12 @@ export class ConstructorStore {
     // @action setItem(smth: any){
     //     this.item = smth
     // }
-    @action changeName( ){
-        this.name = smth
-    }
-    @action getPages(){
-        return this.pages
-    }
+    // @action changeName( ){
+    //     this.name = smth
+    // }
+    // @action getPages(){
+    //     return this.pages
+    // }
 }
 
 // export default new Constructor

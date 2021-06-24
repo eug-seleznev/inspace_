@@ -13,7 +13,7 @@ const ComponentProperties = observer(() => {
     console.log('wow',wow.about)
 
     return( 
-        <div style={{color: "white", padding:'40px'}} onClick={()=>store.setItem({name:'lol', about: 'ahahahhah'})}>
+        <div style={{color: "white", padding:'40px'}} >
             component props 
         </div>
     )
