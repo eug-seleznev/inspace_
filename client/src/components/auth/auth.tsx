@@ -42,7 +42,7 @@ const PrivatePages = observer(({children}: any) => {
         
         if(auth === LoadingStatus.SUCCESS) return children
         if(auth === LoadingStatus.LOADING) return  'loading' //todo loading component
-        else return <Auth />
+        else return children
 
     
 })

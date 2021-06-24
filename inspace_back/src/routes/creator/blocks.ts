@@ -127,15 +127,6 @@ router.put(
         { $set: req.body }
       );
       res.json(block.services);
-      // await Block.findOne(
-      //   { "services.list._id": req.params.id },
-      //   (err: Error, doc: IBlock) => {
-      //     if (err) throw err;
-      //     if (!doc) {
-      //       return res.status(404).json({ err: "huy" });
-      //     }
-      //   }
-      // );
     } catch (error) {
       console.error(error);
       return res.status(500).json({ err: "server error" });

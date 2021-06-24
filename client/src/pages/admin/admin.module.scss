@@ -1,32 +1,7 @@
 $grey-text:#747474;
 $block-background:#18181C ;
-.main {
-    background-color: #141414;
-    min-height: 100vh;
-    color: white;
-}
-.layout {
-    background-color: #313131  ;
-    width:100%;
-    height: 62px;
-    display: flex;
-    align-items: center;
-    margin-top: 15px;
-}
-.links {
-    display:flex;
-    justify-content:space-between;
-    width:900px;
-}
-.link {
-   
-    border-radius: 30px;
-    padding: 24px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    color: #BEBEBE;
-    text-decoration: none;
-}
+$block-border-radius:10px ;
+
 .stats {
     margin-left:15vw;
     margin-top: 58px;
@@ -42,7 +17,7 @@ $block-background:#18181C ;
     width: 567px;
     height: 302px;
     background-color: $block-background;
-    border-radius: 10px;
+    border-radius: $block-border-radius;
 }
 .stats__visits__first_line {
     display: flex;
@@ -57,7 +32,7 @@ $block-background:#18181C ;
     width: 377px;
     height: 198px;
     background-color: $block-background;
-    border-radius: 10px;
+    border-radius: $block-border-radius;
 }
 .stats__first__row {
     display: flex;
@@ -88,7 +63,7 @@ $block-background:#18181C ;
     width: 337px;
     height: 198px;
     background-color: $block-background;
-    border-radius: 10px;
+    border-radius:$block-border-radius;
     margin-top: 73px;
     text-align: center;
     display: flex;
@@ -116,6 +91,10 @@ $block-background:#18181C ;
 .stats__visits__graph {
     border: 1px solid transparent;
     border-bottom: none;
+    background-color:'#0074EB';
+    width:7px;
+    cursor: pointer;
+    margin-right:5px
 }
 .stats__visits__graph:hover {
     border: 1px solid white;

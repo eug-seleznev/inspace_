@@ -3,8 +3,8 @@ import Visits from './components/visits'
 import Booking from './components/booking'
 import News from './components/news'
 import More from './components/more'
-const Stats = () => {
 
+const Stats = () => {
     return (
         <div className={style.stats} >
 
@@ -15,6 +15,7 @@ const Stats = () => {
             </div>
             <News></News>
         </div>
+
     )
 
 }

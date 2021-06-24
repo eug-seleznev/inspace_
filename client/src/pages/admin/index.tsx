@@ -1,8 +1,8 @@
 
 import Constructor from "../constructor";
-import Stats from "./stats/index";
+import Dashboard from "./dashboard/index";
 import Layout from "../../shared/layout";
-import Header from "../auth/Header";
+import Header from "../../shared/layout/component/Header";
 import style from './admin.module.scss'
 import { Route } from "react-router-dom";
 import Service from "./service";
@@ -11,32 +11,21 @@ import Service from "./service";
 
 
 const Admin = ({match}: any) => {
-    return (
-        <div id='layout' className={style.main} style={{height:'100%'}}>
-            <Header/>
-            <Layout/>
-            <Route exact path={`${match.path}`}>
-                <Stats/>
-            </Route>
 
-        
-            <Route exact path={`${match.path}/design`}>
-                <Constructor />
-            </Route>
-
-            <Route exact path={`${match.path}/booking`}>
+    
+    return (           
+            <Layout>
+            <Route exact path={`${match.path}/dashboard`} component={Dashboard}/>
+            <Route exact path={`${match.path}/design`} component={Constructor} />
+            <Route exact path={`${match.path}/book`}>
                 <h2> test</h2>
             </Route>
-
-            <Route exact path={`${match.path}/service`}>
-                <Service />
-            </Route>
-
+            <Route exact path={`${match.path}/service`} component={Service} />
             <Route exact path={`${match.path}/events`}>
                 <h2> events</h2>
             </Route>
 
-        </div>
+        </Layout>
     )
 }
 

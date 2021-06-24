@@ -25,6 +25,7 @@ const BlockSchema = new Schema({
           days: [
             {
               date: Date,
+              date_locale: String,
               reservations: [
                 {
                   user: { name: String, phone: String, email: String },

@@ -2,7 +2,7 @@ import { model, Schema, Model, Document, ObjectId } from "mongoose";
 import { ITemplate } from "./Template";
 import { User } from "../../../shared/types";
 export interface IUser extends Document, User {
-  _id?:string;
+  _id?: string;
   template: ITemplate["_id"];
 }
 
@@ -41,6 +41,7 @@ const UserSchema = new Schema({
   stats: [
     {
       date: { type: Date },
+      date_locale: { type: String },
       day: {
         type: Number,
       },
@@ -54,17 +55,6 @@ const UserSchema = new Schema({
         type: Number,
         default: 0,
       },
-      // users: [
-      //   {
-      //     stats: [
-      //       {
-      //         name: String,
-      //         count: { type: Number, default: 0 },
-      //       },
-      //     ],
-      //     visits: Number,
-      //   },
-      // ],
     },
   ],
 });

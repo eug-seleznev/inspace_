@@ -1,5 +1,6 @@
 interface Day {
   date: Date;
+  date_locale: string;
 }
 interface Month {
   month: number;
@@ -13,7 +14,7 @@ export = async (date: Date) => {
   try {
     const year = date.getFullYear();
     const months: Month[] = [];
-    const YearObj = {
+    const YearObj: Year = {
       year,
       months,
     };
@@ -24,8 +25,10 @@ export = async (date: Date) => {
       let curr: number = 1;
       const max: number = new Date(year, month + 1, 0).getDate();
       while (curr <= max) {
+        const d = new Date(year, month, curr);
         const day = {
-          date: new Date(year, month, curr),
+          date: d,
+          date_locale: d.toLocaleDateString(),
         };
         MonthObj.days.push(day);
         curr += 1;

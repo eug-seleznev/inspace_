@@ -11,16 +11,15 @@ import stats from "../../middleware/stats";
 const router = Router();
 
 // increase user count
-router.get("/usercount/increase/:id",async(req,res)=>{
-    try{
-        const updObj={$inc:{"stats.$.visits":1}}
-        await stats(req.params.id,updObj)
-        return res.json({msg:"huy"})
-    }catch(error){
-      console.error(error);
-      return res.status(500).json({err:"server error"});
-    }
-})
-
+router.get("/usercount/increase/:id", async (req: Request, res: Response) => {
+  try {
+    const updObj = { $inc: { "stats.$.visits": 1 } };
+    await stats(req.params.id, updObj);
+    return res.json({ msg: "huy" });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ err: "server error" });
+  }
+});
 
 export default router;

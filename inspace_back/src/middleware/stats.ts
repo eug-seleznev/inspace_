@@ -5,24 +5,15 @@ dotenv.config();
 
 export = async (USER_ID: string, updateInfo: object) => {
   try {
-
     const d = new Date();
-    const huy = {
-      day: d.getDate(),
-      month: d.getMonth() + 1,
-      year: d.getFullYear(),
-    };
-    console.log(huy)
-    const user = await User.findOneAndUpdate(
+    await User.findOneAndUpdate(
       {
         _id: USER_ID,
-        "stats.day": huy.day,
-        "stats.month": huy.month,
-        "stats.year": huy.year,
+        "stats.date_locale": d.toLocaleDateString(),
       },
-      updateInfo
-    )
-    console.log(user);
+      updateInfo,
+      { new: true }
+    );
   } catch (error) {
     console.error(error.message);
     process.exit(1);
