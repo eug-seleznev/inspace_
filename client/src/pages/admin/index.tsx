@@ -13,33 +13,19 @@ import Service from "./service";
 const Admin = ({match}: any) => {
 
     
-    return (
-        <div id='layout' className={style.main} style={{height:'100%'}}>
-           
-            <Layout match={match}>
-            <Route exact path={`${match.path}`}>
-                <Dashboard />
-            </Route>
-
-        
-            <Route exact path={`${match.path}/design`}>
-                <Constructor />
-            </Route>
-
+    return (           
+            <Layout>
+            <Route exact path={`${match.path}/dashboard`} component={Dashboard}/>
+            <Route exact path={`${match.path}/design`} component={Constructor} />
             <Route exact path={`${match.path}/book`}>
                 <h2> test</h2>
             </Route>
-
-            <Route exact path={`${match.path}/service`}>
-                <Service />
-            </Route>
-
+            <Route exact path={`${match.path}/service`} component={Service} />
             <Route exact path={`${match.path}/events`}>
                 <h2> events</h2>
             </Route>
-            </Layout>
 
-        </div>
+        </Layout>
     )
 }
 

@@ -1,30 +1,59 @@
-import { Link } from 'react-router-dom'
+import { useInjection } from 'inversify-react'
+import { observer } from 'mobx-react'
+import { useMemo } from 'react'
+import { Link, useLocation, useRouteMatch } from 'react-router-dom'
 import styled from 'styled-components'
+import { UserStore } from '../../../stores/user_/UserStore'
 import { Text } from '../../Text/text'
-import style from '../layout.module.scss'
 
 const Container = styled.div`
     background-color: ${({theme}) => theme.colors.inputs};
     width:100%;
-    height: 62px;
+    height: 52px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    
+    
+`
+
+const Flex = styled.div`
+    width:700px;
     display: flex;
-    align-items: center;
+    flex-direction: row;
+    justify-content:space-evenly;
 `
 
 
 
 
-const Navbar = ({match}: any) => {
+const Navbar = observer(() => {
+    const userStore = useInjection(UserStore)
+    let location = useLocation();
+    let match = useRouteMatch();
+    const path = useMemo(() => location.pathname.split('/')[2], [location])
+    
+  
     return (
         <Container >
-            <div className={style.links}  >
-               {Links.map(link => {
-                   return <Link to={`${match.path}/${link.path}`}>{link.title}</Link>
+            <Flex>
+               <Text>
+                   {userStore.user?.email}
+                </Text>
+              
+               {Links.map((link, index) => {
+
+                   return (
+                    <Link to={`${match.path}/${link.path}`}  key={index}>
+                        <Text  style={{color: link.path==path? "red" : "blue", textDecoration: "none"} }>
+                            {link.title}
+                        </Text>
+                      
+                    </Link>
+                   )
                })}
-            </div>
+            </Flex>    
         </Container>
     )
-}
+})
 
 export default Navbar
 
@@ -33,31 +62,26 @@ export default Navbar
 const Links: ILinks[] =[
     {
         title: 'Дешборд',
-        path: '/'
+        path: 'dashboard'
     },
     {
         title: 'Дизайн',
-        path: '/design'
+        path: 'design'
     },
     
     {
         title: 'Бронирование',
-        path: '/book'
+        path: 'book'
     },
     {
         title: 'Услуги',
-        path: '/service'
+        path: 'service'
     },
     {
         title: 'Мероприятия',
-        path: '/events'
+        path: 'events'
     }
 ]
-
-
-
-
-
 
 
 

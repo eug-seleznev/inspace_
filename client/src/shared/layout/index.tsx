@@ -6,19 +6,19 @@ import styled  from "styled-components"
 
 const Container = styled.div`
     background-color: ${({theme}) => theme.colors.main};
-    width:100%;
     display: flex;
+    flex-direction: column;
 
 `
 
-const Layout = ({ children, match }: any) => {
+const Layout = ({ children }: any) => {
 
 
     return (
         <>
         <Header />
         <Container>
-          <Navbar match={match}/>
+          <Navbar />
             {children}
         </Container>
         </>
