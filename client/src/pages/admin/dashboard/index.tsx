@@ -5,44 +5,51 @@ import styled from 'styled-components'
 
 const Grid = styled.div`
     display:grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(12, 90px);
     row-gap: 40px;
     column-gap: 30px;
-    grid-template-areas:
-    '. a a b .'
-    '. c d d .'
-    '. e e e .'
-    '. f g h .';
+    margin-left: auto;
+    margin-right: auto;
+    height: 100vh;
+    grid-auto-flow: dense;
+    overflow: scroll;
+
+
+    @media (max-width: 1500px){
+    grid-template-columns: repeat(12, 80px);
+
+    }
+    @media (max-width: 1300px){
+        grid-template-columns: repeat(12, 1fr);
+        margin-left: 15px;
+        margin-right: 15px;
+        }
+    @media (max-width: 770px){
+        grid-template-columns: 1fr;
+        margin-left: 15px;
+        margin-right: 15px;
+        }
 `
 
 
 
 const Dashboard = () => {
     return (
-        <Grid>
-            <Card title="new" gridArea='a'>
-                <Text> hello a</Text>
+        <Grid style={{overflow: 'scroll'}}>
+            <Card title="new" columns={7}>
+                <Text> hello 1</Text>
             </Card>
-            <Card title="new" gridArea='b'>
-                <Text> hello b</Text>
+            <Card title="new" columns={2}>
+                <Text> hello 2</Text>
             </Card>
-            <Card title="new" gridArea='c'>
-                <Text> hello c</Text>
+            <Card title="new" columns={3}>
+                <Text> hello 3</Text>
             </Card>
-            <Card title="new" gridArea='d'>
-                <Text> hello d</Text>
+            <Card title="new" columns={7}>
+                <Text> hello 4</Text>
             </Card>
-            <Card title="new" gridArea='e'>
-                <Text> hello e</Text>
-            </Card>
-            <Card title="new" gridArea='f'>
-                <Text> hello f</Text>
-            </Card>
-            <Card title="new" gridArea='g'>
-                <Text> hello g</Text>
-            </Card>
-            <Card title="new" gridArea='h'>
-                <Text> hello h</Text>
+            <Card title="new" columns={5}>
+                <Text> hello 5</Text>
             </Card>
         </Grid>
     )

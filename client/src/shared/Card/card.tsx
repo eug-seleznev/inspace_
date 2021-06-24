@@ -8,10 +8,10 @@ import styled from 'styled-components'
 interface ICardProps {
   children: any
   title: string
-  gridArea?: string
+  columns?: number
 }
 interface ICardStyleProps {
-    gridArea?: string
+    columns?: number
   }
 
 
@@ -30,17 +30,21 @@ const CardBody = styled.div`
     background-color: ${({theme}) => theme.colors.card};
     border: 1px solid grey;
     border-radius: 10px;
+    height: 330px;
 
 
 `
 const CardContainer = styled.div<ICardStyleProps>`
-grid-area: ${props => props.gridArea};
+grid-column: span ${props => props.columns};
 
+@media (max-width:770px) {
+    grid-column: span 1;
+}
 `
 
-const Card = observer(({children, title, gridArea}: ICardProps) => {
+const Card = observer(({children, title, columns}: ICardProps) => {
     return (
-        <CardContainer gridArea={gridArea}>   
+        <CardContainer columns={columns}>   
             <CardHeader>
                 {/* header */}
                 <p>{title}</p>
