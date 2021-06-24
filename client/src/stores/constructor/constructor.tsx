@@ -1,27 +1,38 @@
-import {makeAutoObservable} from 'mobx'
+import { injectable } from 'inversify'
+import {action, makeAutoObservable, observable} from 'mobx'
 
-// interface StringArray {
-//     [index: number]: string,
-// }
-
-interface SiteObject {
-    name?: string,
-    pages?: string[],
+interface IItem {
+    name: string,
+    about?: string
 }
 
-export class Constructor implements SiteObject {
-    name:string
-    pages: string[]
 
-    constructor(props:any) {
+
+@injectable()
+export class ConstructorStore {
+    @observable name:string
+    @observable pages: string[]
+    @observable item: IItem
+
+    public constructor() {
         makeAutoObservable(this)
-        this.name = props.name
-        this.pages = props.pages
+        this.name = 'name'
+        this.pages = ['1page']
+        this.item = {name:'1 item'}
     }
 
 
-    addPage(smth: string){
+    @action addPage(smth: string){
         this.pages.push(smth)
+    }
+    // @action setItem(smth: any){
+    //     this.item = smth
+    // }
+    @action changeName( ){
+        this.name = smth
+    }
+    @action getPages(){
+        return this.pages
     }
 }
 
