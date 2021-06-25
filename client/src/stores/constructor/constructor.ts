@@ -1,5 +1,6 @@
 import { injectable } from 'inversify'
 import {action, makeAutoObservable, observable} from 'mobx'
+import {RootStore} from "../RootStore";
 
 interface IItem {
     name: string,
@@ -10,11 +11,11 @@ interface IItem {
 
 @injectable()
 export class ConstructorStore {
-    @observable name:string
+    @observable name: string
     @observable pages: string[]
     @observable item: IItem
 
-    public constructor() {
+    public constructor(private readonly rootStore: RootStore) {
         makeAutoObservable(this)
         this.name = 'name'
         this.pages = ['1page']
