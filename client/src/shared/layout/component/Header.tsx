@@ -1,3 +1,4 @@
+import React from 'react';
 import { Text } from '../../Text/text'
 import style from '../layout.module.scss'
 

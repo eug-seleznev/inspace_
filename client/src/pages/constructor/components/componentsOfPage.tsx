@@ -1,3 +1,4 @@
+import React from 'react';
 import { observer } from "mobx-react"
 import { useState } from "react"
 import '../constructor.sass'
@@ -17,8 +18,8 @@ const ComponentSOfPage = observer(() => {
             <img 
                 onMouseOver={()=>setPlusHover(true)} 
                 onMouseOut={()=>setPlusHover(false)} 
-                style={{backgroundColor: plusHover?  '#484848' : 'transparent', height:'100%'}} 
-                src={'/plus.png'}/>
+                style={{backgroundColor: plusHover?  '#484848' : 'transparent', height:'100%'}}
+                src={require('../../../images/plus.png')}/>
         </div>
     )
 })

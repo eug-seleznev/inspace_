@@ -1,6 +1,9 @@
 import Card from "../../../shared/Card/card"
-import { Text } from "../../../shared/Text/text"
+import {Text} from "../../../shared/Text/text"
 import styled from 'styled-components'
+import {useInjection} from "inversify-react";
+import {ModalsEnum, ModalStore} from "../../../stores/ModalStore";
+import _ from 'lodash';
 
 
 const Grid = styled.div`
@@ -34,10 +37,16 @@ const Grid = styled.div`
 
 
 const Dashboard = () => {
+    const modalStore = useInjection(ModalStore);
+
     return (
         <Grid style={{overflow: 'scroll'}}>
             <Card title="new" columns={7}>
                 <Text> hello 1</Text>
+                <button onClick={() => {
+                    _.range(4).map(i => modalStore.showModal(ModalsEnum.Test, { text: `abc ${i}` }))
+                }}>mdl</button>
+
             </Card>
             <Card title="new" columns={2}>
                 <Text> hello 2</Text>

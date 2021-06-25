@@ -1,3 +1,4 @@
+import React from 'react';
 import { useInjection } from "inversify-react"
 import { observer } from "mobx-react"
 import { ConstructorStore } from "../../../stores/constructor/constructor"

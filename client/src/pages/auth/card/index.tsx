@@ -1,9 +1,5 @@
 import { observer } from "mobx-react";
 
-
-
-
-
 const UserCard = observer(() => {
     return (
         <div>

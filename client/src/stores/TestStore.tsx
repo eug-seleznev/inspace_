@@ -1,12 +1,13 @@
 import { injectable } from "inversify";
 import { action, makeObservable, observable } from "mobx";
 import "reflect-metadata";
+import { RootStore } from "./RootStore";
 
 @injectable()
 export class TestStore {
     @observable testValue?: string
     
-    public constructor(){
+    public constructor(private readonly rootStore: RootStore){
         makeObservable(this)
         this.testValue = 'yes'
     }
@@ -17,6 +18,7 @@ export class TestStore {
 
     @action ChangeValue(){
         this.testValue = 'eeeee'
+        this.rootStore.serviceStore
     }
 
 }

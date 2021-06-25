@@ -1,3 +1,4 @@
+import React from 'react';
 import { observer } from "mobx-react"
 import '../constructor.sass'
 import ListItem from "./listItem"
@@ -9,7 +10,7 @@ const PagesList = observer(() => {
         <div className='navigator__pageList'>
             <div className='flex-row'>
                 <h3>Страницы</h3>
-                <img src={'/plus.png'}/>
+                <img src={require('../../../images/plus.png')}/>
             </div>
             <ListItem />
             <ListItem />
