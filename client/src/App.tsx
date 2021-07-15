@@ -1,4 +1,4 @@
-import React from 'react';
+import yarnReact from 'react';
 import {useEffect} from "react";
 import {Provider, useInjection} from "inversify-react";
 import {
